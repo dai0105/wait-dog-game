@@ -1,0 +1,1274 @@
+/* =========================
+   DOG
+========================= */
+
+#dog-area {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 220px;
+    margin: 0 auto;
+}
+
+#dog-character {
+    position: absolute;
+    left: 8%;
+    bottom: 18px;
+
+    font-size: 80px;
+
+    transform: translateX(0);
+}
+
+#treat {
+    position: absolute;
+    right: 10%;
+    bottom: 22px;
+
+    font-size: 45px;
+}
+
+#dog-image {
+    display: block;
+    width: 160px;
+    height: auto;
+}
+
+
+
+/* =========================
+   待て中
+========================= */
+
+#dog-character.waiting {
+    animation:
+        dog-waiting 0.8s ease-in-out infinite;
+}
+
+@keyframes dog-waiting {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+
+}
+
+
+/* =========================
+   フェイント
+========================= */
+
+#dog-character.fake {
+    animation:
+        dog-fake 0.25s ease;
+}
+
+@keyframes dog-fake {
+
+    0% {
+        transform:
+            translateX(0);
+    }
+
+    50% {
+        transform:
+            translateX(12px);
+    }
+
+    100% {
+        transform:
+            translateX(0);
+    }
+
+}
+
+
+/* =========================
+   よし！
+========================= */
+
+#dog-character.ready {
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================
+   おやつへダッシュ
+========================= */
+
+#dog-character.running {
+    animation:
+        dog-running 0.75s ease-in forwards;
+}
+
+@keyframes dog-running {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(0deg);
+    }
+
+    15% {
+        transform:
+            translate(25px, -8px)
+            rotate(-4deg);
+    }
+
+    30% {
+        transform:
+            translate(60px, 2px)
+            rotate(3deg);
+    }
+
+    45% {
+        transform:
+            translate(100px, -9px)
+            rotate(-4deg);
+    }
+
+    60% {
+        transform:
+            translate(140px, 2px)
+            rotate(3deg);
+    }
+
+    75% {
+        transform:
+            translate(180px, -7px)
+            rotate(-3deg);
+    }
+
+    90% {
+        transform:
+            translate(215px, 0)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            translate(230px, 0)
+            rotate(0deg);
+    }
+
+}
+
+/* =========================
+   成功：おやつへ走る
+========================= */
+
+#dog-character.running {
+    animation: none;
+
+    transition:
+        transform 0.65s ease-in;
+
+    transform:
+        translateX(230px);
+}
+
+
+/* =========================
+   おやつを食べる
+========================= */
+
+#dog-character.eating {
+    animation:
+        dog-eating 0.5s ease-in-out forwards;
+}
+
+@keyframes dog-eating {
+
+    0% {
+        transform:
+            translate(230px, 0)
+            rotate(0deg);
+    }
+
+    35% {
+        transform:
+            translate(230px, 5px)
+            rotate(8deg);
+    }
+
+    65% {
+        transform:
+            translate(230px, -2px)
+            rotate(-3deg);
+    }
+
+    100% {
+        transform:
+            translate(230px, 3px)
+            rotate(5deg);
+    }
+
+}
+
+@keyframes dog-eating {
+
+    from {
+        transform:
+            translateX(230px)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translateX(230px)
+            rotate(8deg);
+    }
+
+}
+
+
+/* おやつが食べられる */
+
+#treat.eaten {
+    opacity: 0;
+
+    transform:
+        scale(0.3);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* =========================
+   ぱくっ！
+========================= */
+
+#eat-message {
+    position: absolute;
+    right: 12%;
+    bottom: 175px;
+    z-index: 10;
+
+    font-size: 32px;
+    font-weight: 900;
+
+    color: #f28b30;
+
+    pointer-events: none;
+}
+
+#eat-message[hidden] {
+    display: none;
+}
+
+#eat-message.show {
+    display: block;
+
+    animation:
+        eat-message-pop
+        0.7s
+        ease-out
+        forwards;
+}
+
+@keyframes eat-message-pop {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(0.5);
+    }
+
+    30% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1.25);
+    }
+
+    60% {
+        opacity: 1;
+        transform:
+            translateY(-4px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-22px)
+            scale(1);
+    }
+
+}
+
+/* =========================
+   フライング演出
+========================= */
+
+#dog-character.flying {
+    animation:
+        dog-flying 0.6s ease-in-out;
+}
+
+@keyframes dog-flying {
+
+    0% {
+        transform:
+            translateX(0)
+            rotate(0deg);
+    }
+
+    20% {
+        transform:
+            translateX(15px)
+            rotate(5deg);
+    }
+
+    40% {
+        transform:
+            translateX(5px)
+            rotate(-5deg);
+    }
+
+    60% {
+        transform:
+            translateX(15px)
+            rotate(4deg);
+    }
+
+    80% {
+        transform:
+            translateX(5px)
+            rotate(-3deg);
+    }
+
+    100% {
+        transform:
+            translateX(0)
+            rotate(0deg);
+    }
+
+}
+
+/* =========================
+   フライング文字
+========================= */
+
+#flying-message {
+    position: absolute;
+
+    left: 28%;
+    bottom: 180px;
+
+    z-index: 10;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    color: #e74c3c;
+
+    pointer-events: none;
+}
+
+#flying-message[hidden] {
+    display: none;
+}
+
+#flying-message.show {
+    display: block;
+
+    animation:
+        flying-message-pop
+        0.7s
+        ease-out
+        forwards;
+}
+
+@keyframes flying-message-pop {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.5)
+            rotate(-8deg);
+    }
+
+    30% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1.3)
+            rotate(5deg);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-4px)
+            scale(1)
+            rotate(-2deg);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-20px)
+            scale(1);
+    }
+
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff8ed 0%,
+            #fff1dc 100%
+        );
+
+    color: #5c4033;
+
+    font-family:
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+}
+
+#title-screen {
+    width: 92%;
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+#title-screen h1 {
+    margin: 10px 0 8px;
+
+    color: #5c4033;
+
+    font-size: 42px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.04em;
+}
+
+#game-start-button {
+    width: 280px;
+
+    margin-top: 24px;
+
+    padding: 16px 24px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background-color: #f28b30;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 0 #d96d18;
+}
+
+#game-start-button {
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+#game-start-button:active {
+    transform:
+        translateY(4px);
+
+    box-shadow:
+        0 2px 0 #d96d18;
+}
+
+#best-score-area {
+    max-width: 340px;
+
+    margin: 24px auto;
+
+    padding: 18px 24px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#best-score-area p {
+    margin: 0 0 8px;
+
+    color: #8a6a5a;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+
+#best-score {
+    color: #d96d18;
+
+    font-size: 28px;
+    font-weight: 900;
+}
+
+#rank-guide h2 {
+    margin: 0 0 16px;
+
+    color: #d96d18;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    letter-spacing: 0.05em;
+}
+
+#rank-guide {
+    max-width: 480px;
+
+    margin: 30px auto 0;
+
+    padding: 22px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+.rank-guide-list {
+    display: grid;
+    gap: 8px;
+}
+
+.rank-guide-list > div {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 10px 14px;
+
+    background-color: #fff1dc;
+
+    border-radius: 12px;
+}
+
+.rank-guide-list strong {
+    min-width: 42px;
+
+    color: #d96d18;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    text-align: left;
+}
+
+#rank-guide > p {
+    margin: 16px 0 0;
+
+    color: #8a6a5a;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+#rule-guide {
+    max-width: 480px;
+
+    margin: 24px auto;
+
+    padding: 22px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#rule-guide h2 {
+    margin: 0 0 16px;
+
+    color: #d96d18;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    letter-spacing: 0.05em;
+}
+
+#rule-guide p {
+    margin: 10px 0;
+
+    color: #5c4033;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+#rule-guide strong {
+    color: #d96d18;
+
+    font-weight: 900;
+}
+
+#game-screen {
+    width: 92%;
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+#round-number {
+    display: inline-block;
+
+    margin: 0 0 16px;
+
+    padding: 8px 18px;
+
+    background-color: #fff1dc;
+
+    color: #d96d18;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+}
+
+#command-text {
+    margin: 0;
+
+    color: #5c4033;
+
+    font-size: 52px;
+    font-weight: 900;
+
+    letter-spacing: 0.06em;
+}
+
+#game-message {
+    margin: 20px 0;
+
+    color: #8a6a5a;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.6;
+}
+
+#dog-area {
+    background:
+        linear-gradient(
+            to bottom,
+            #dff4ff 0%,
+            #eefaff 62%,
+            #cfe8a9 62%,
+            #b9d98b 100%
+        );
+
+    border:
+        3px solid #ffffff;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 12px 28px
+        rgba(92, 64, 51, 0.25);
+
+    overflow: hidden;
+}
+
+#go-button {
+    width: 100%;
+    max-width: 360px;
+
+    padding: 18px 24px;
+
+    border: none;
+    border-radius: 999px;
+
+    background-color: #f28b30;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 0 #d96d18;
+}
+
+#go-button {
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+#go-button:active {
+    transform:
+        translateY(4px);
+
+    box-shadow:
+        0 2px 0 #d96d18;
+}
+
+#command-text.success {
+    color: #f28b30;
+
+    animation:
+        command-success
+        0.35s
+        ease-out;
+}
+
+@keyframes command-success {
+
+    0% {
+        transform: scale(0.8);
+    }
+
+    60% {
+        transform: scale(1.18);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+#round-result-screen {
+    width: 92%;
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+#round-result-label {
+    display: inline-block;
+
+    margin: 0 0 20px;
+
+    padding: 8px 18px;
+
+    background-color: #fff1dc;
+
+    color: #d96d18;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+}
+
+#result-title {
+    margin: 16px 0 8px;
+
+    color: #4f9d69;
+
+    font-size: 36px;
+    font-weight: 900;
+
+    letter-spacing: 0.05em;
+}
+
+#result-title.flying {
+    color: #e74c3c;
+}
+
+#score-result {
+    margin: 8px 0 16px;
+
+    color: #5c4033;
+
+    font-size: 42px;
+    font-weight: 900;
+
+    letter-spacing: 0.03em;
+}
+
+#result-message {
+    margin: 12px 0 24px;
+
+    color: #8a6a5a;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.6;
+}
+
+#next-round-button {
+    width: 100%;
+    max-width: 320px;
+
+    padding: 16px 24px;
+
+    border: none;
+    border-radius: 999px;
+
+    background-color: #f28b30;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 0 #d96d18;
+}
+
+#next-round-button {
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+#next-round-button:active {
+    transform:
+        translateY(4px);
+
+    box-shadow:
+        0 2px 0 #d96d18;
+}
+
+#result-dog-image {
+    display: block;
+
+    width: 160px;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+#final-result-screen {
+    width: 92%;
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+#final-result-label {
+    display: inline-block;
+
+    margin: 0 0 20px;
+
+    padding: 8px 18px;
+
+    background-color: #fff1dc;
+
+    color: #d96d18;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+}
+
+#final-dog-image {
+    display: block;
+
+    width: 160px;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+#final-result-screen > h2 {
+    margin: 16px 0 24px;
+
+    color: #5c4033;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    letter-spacing: 0.04em;
+}
+
+#final-rank-area {
+    max-width: 400px;
+
+    margin: 16px auto;
+
+    padding: 24px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#final-rank {
+    margin: 8px 0;
+
+    color: #d96d18;
+
+    font-size: 64px;
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+#final-rank-area > p:first-child {
+    margin: 0 0 12px;
+
+    color: #8a6a5a;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+#final-rank-message {
+    margin: 12px 0 0;
+
+    color: #5c4033;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 1.6;
+}
+
+#average-score-area {
+    max-width: 400px;
+
+    margin: 16px auto;
+
+    padding: 22px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#average-score {
+    margin: 8px 0 12px;
+
+    color: #d96d18;
+
+    font-size: 36px;
+    font-weight: 900;
+
+    letter-spacing: 0.03em;
+}
+
+#average-score-area > p:first-child {
+    margin: 0 0 10px;
+
+    color: #8a6a5a;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+#average-score-area > p:last-child {
+    margin: 12px 0 0;
+
+    color: #8a6a5a;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    line-height: 1.6;
+}
+
+#fastest-score-area {
+    max-width: 400px;
+
+    margin: 16px auto;
+
+    padding: 22px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#fastest-score {
+    margin: 8px 0;
+
+    color: #4f9d69;
+
+    font-size: 36px;
+    font-weight: 900;
+
+    letter-spacing: 0.03em;
+}
+
+#flying-count-area {
+    max-width: 400px;
+
+    margin: 16px auto;
+
+    padding: 22px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#flying-count {
+    margin: 8px 0;
+
+    color: #e74c3c;
+
+    font-size: 36px;
+    font-weight: 900;
+
+    letter-spacing: 0.03em;
+}
+
+#flying-count-area > p {
+    margin: 0 0 10px;
+
+    color: #8a6a5a;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+#round-results-area {
+    max-width: 400px;
+
+    margin: 16px auto;
+
+    padding: 22px;
+
+    background-color: #ffffff;
+
+    border: 2px solid #fff1dc;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(92, 64, 51, 0.12);
+}
+
+#round-results-area h3 {
+    margin: 0 0 16px;
+
+    color: #d96d18;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    letter-spacing: 0.05em;
+}
+
+#final-round-results {
+    display: grid;
+    gap: 8px;
+}
+
+.round-result-row {
+    padding: 10px 14px;
+
+    background-color: #fff1dc;
+
+    border-radius: 12px;
+
+    color: #5c4033;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+.round-result-row.success {
+    background-color: #e8f5e9;
+
+    color: #3f7d55;
+}
+
+.round-result-row.flying {
+    background-color: #fdeaea;
+    color: #b94a48;
+}
+
+#retry-button {
+    width: 280px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 999px;
+    background-color: #f28b30;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow:
+        0 6px 0 #d96d18;
+    transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+#retry-button:active {
+    transform:
+        translateY(4px);
+    box-shadow:
+        0 2px 0 #d96d18;
+}
+
+#back-title-button {
+    width: 280px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 999px;
+    background-color: #f28b30;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow:
+        0 6px 0 #d96d18;
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+#back-title-button:active {
+    transform:
+        translateY(4px);
+    box-shadow:
+        0 2px 0 #d96d18;
+}
+
+/* =========================
+   スマホ対応
+========================= */
+@media (max-width: 600px) {
+
+    #title-screen {
+        width: auto;
+        padding: 24px 16px;
+    }
+
+    #title-screen h1 {
+        font-size: 30px;
+    }
+
+    #dog-character.running {
+        transform:
+            translateX(160px);
+    }
+
+     #retry-button {
+        margin-bottom: 24px;
+    }
+
+    #go-button:active,
+    #game-start-button:active,
+    #next-round-button:active,
+    #retry-button:active,
+    #back-title-button:active {
+        transform:
+            translateY(8px);
+        box-shadow:
+            0 0 0 #d96d18;
+    }
+}

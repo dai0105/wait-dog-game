@@ -1,0 +1,385 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>待て！できるかな？</title>
+
+<link
+    rel="stylesheet"
+    href="{% static 'game/css/style.css' %}"
+>
+</head>
+
+<body>
+
+<main>
+
+    <section id="title-screen">
+
+        <header>
+
+            <p>
+                WAIT DOG GAME
+            </p>
+
+            <h1>
+                🐕 待て！できるかな？
+            </h1>
+
+            <p>
+                「よし！」まで待てるかな？
+            </p>
+
+        </header>
+
+
+        <section id="best-score-area">
+
+            <p>
+                BEST SCORE
+            </p>
+
+            <div id="best-score">
+                🏆 ---
+            </div>
+
+        </section>
+
+
+        <section id="rule-guide">
+
+            <h2>
+                🐾 ルール
+            </h2>
+
+            <p>
+                わんこに「待て！」をします。
+            </p>
+
+            <p>
+                合図が
+                <strong>「よし！」</strong>
+                に変わったら、
+                できるだけ早くボタンを押してください。
+            </p>
+
+            <p>
+                でも「よし！」より前に押したら
+                <strong>フライング！</strong>
+            </p>
+
+            <p>
+                全5ROUND。
+            </p>
+
+        </section>
+
+        <section id="rank-guide">
+
+            <h2>
+                🏆 RANK GUIDE
+            </h2>
+
+            <div class="rank-guide-list">
+
+                <div>
+                    <strong>S+</strong>
+                    <span>
+                        0.450秒以下 / フライング0回
+                    </span>
+                </div>
+
+                <div>
+                    <strong>S</strong>
+                    <span>
+                        0.550秒以下 / フライング0回
+                    </span>
+                </div>
+
+                <div>
+                    <strong>A</strong>
+                    <span>
+                        0.700秒以下 / フライング1回以下
+                    </span>
+                </div>
+
+                <div>
+                    <strong>B</strong>
+                    <span>
+                        0.850秒以下 / フライング2回以下
+                    </span>
+                </div>
+
+                <div>
+                    <strong>C</strong>
+                    <span>
+                        それ以外
+                    </span>
+                </div>
+
+            </div>
+
+            <p>
+                ※ フライングは1回につき1.000秒で計算
+            </p>
+
+        </section>
+
+
+        <button
+            type="button"
+            id="game-start-button"
+        >
+            🎮 GAME START
+        </button>
+
+    </section>
+
+
+<!-- =========================
+     ゲーム画面
+========================== -->
+<section
+    id="game-screen"
+    hidden
+>
+
+    <header>
+
+        <p id="round-number">
+            ROUND 1 / 5
+        </p>
+
+        <h1 id="command-text">
+            待て！
+        </h1>
+
+    </header>
+
+    <!-- 犬とおやつ -->
+    <div id="dog-area">
+
+        <div id="dog-character">
+
+            <img
+                id="dog-image"
+                src="{% static 'game/images/dog_wait.png' %}"
+                alt="チワワ"
+            >
+
+        </div>
+
+        <div id="treat">
+            🦴
+        </div>
+
+        <div
+            id="eat-message"
+            hidden
+        >
+            ぱくっ！
+        </div>
+
+        <div
+            id="flying-message"
+            hidden
+        >
+            あっ！
+        </div>
+
+    </div>
+
+
+    <p id="game-message">
+        「よし！」まで待ってください
+    </p>
+
+    <button
+        type="button"
+        id="go-button"
+    >
+        🐾 よし！
+    </button>
+
+</section>
+
+<!-- =========================
+     ROUND RESULT画面
+========================== -->
+<section
+    id="round-result-screen"
+    hidden
+>
+
+    <p id="round-result-label">
+        ROUND RESULT
+    </p>
+
+    <div id="result-dog">
+
+        <img
+            id="result-dog-image"
+            src="{% static 'game/images/dog_wait.png' %}"
+            alt="チワワ"
+        >
+
+    </div>
+
+    <h2 id="result-title">
+        GOOD！
+    </h2>
+
+    <div id="score-result">
+        0.382秒
+    </div>
+
+    <p id="result-message">
+        上手に待てました！
+    </p>
+
+    <button
+        type="button"
+        id="next-round-button"
+    >
+        NEXT ROUND →
+    </button>
+
+</section>
+
+<!-- =========================
+     FINAL RESULT画面
+========================== -->
+<section
+    id="final-result-screen"
+    hidden
+>
+
+    <p id="final-result-label">
+        FINAL RESULT
+    </p>
+
+    <div id="final-dog">
+
+        <img
+            id="final-dog-image"
+            src="{% static 'game/images/dog_wait.png' %}"
+            alt="チワワ"
+        >
+
+    </div>
+
+    <h2>
+        全5ROUND終了！
+    </h2>
+
+
+    <!-- ランク -->
+    <section id="final-rank-area">
+
+        <p>
+            飼い主ランク
+        </p>
+
+        <div id="final-rank">
+            A
+        </div>
+
+        <p id="final-rank-message">
+            息ぴったり！
+        </p>
+
+    </section>
+
+
+    <!-- 平均反応速度 -->
+    <section id="average-score-area">
+
+        <p>
+            AVERAGE TIME
+        </p>
+
+        <div id="average-score">
+            0.400秒
+        </div>
+
+        <p>
+            ※ フライングは1.000秒で計算
+        </p>
+
+    </section>
+
+
+    <!-- 最速反応 -->
+    <section id="fastest-score-area">
+
+        <p>
+            最速反応
+        </p>
+
+        <div id="fastest-score">
+            0.320秒
+        </div>
+
+    </section>
+
+
+    <!-- フライング -->
+    <section id="flying-count-area">
+
+        <p>
+            フライング
+        </p>
+
+        <div id="flying-count">
+            0回
+        </div>
+
+    </section>
+
+
+    <!-- 各ROUND -->
+    <section id="round-results-area">
+
+        <h3>
+            ROUND RESULTS
+        </h3>
+
+        <div id="final-round-results">
+        </div>
+
+    </section>
+
+
+    <button
+        type="button"
+        id="retry-button"
+    >
+        🎮 もう一度
+    </button>
+
+    <button
+        type="button"
+        id="back-title-button"
+    >
+        タイトルへ戻る
+    </button>
+
+</section>
+
+</main>
+
+<script
+    src="{% static 'game/js/game.js' %}"
+></script>
+
+</body>
+
+</html>
