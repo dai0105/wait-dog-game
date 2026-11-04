@@ -136,22 +136,11 @@ document.addEventListener(
             );
 
         const dogImages = {
-
-            wait:
-                "/static/game/images/dog_wait.png",
-
-            fake:
-                "/static/game/images/dog_fake.png",
-
-            run1:
-                "/static/game/images/dog_run_1.png",
-
-            run2:
-                "/static/game/images/dog_run_2.png",
-
-            eat:
-                "/static/game/images/dog_eat.png"
-
+            wait: dogImage.dataset.waitSrc,
+            fake: dogImage.dataset.fakeSrc,
+            run1: dogImage.dataset.run1Src,
+            run2: dogImage.dataset.run2Src,
+            eat: dogImage.dataset.eatSrc
         };
 
         const eatMessage =
