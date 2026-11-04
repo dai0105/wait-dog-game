@@ -29,8 +29,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "192.168.3.19",
+    ".onrender.com",
 ]
-
 
 # Application definition
 
